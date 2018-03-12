@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- All of our HTML code will go here -->
+        <p id="testParagraph">blahbalabda</p>
+        <p class="sampleClass">This paragraph has a class of 'sampleClass'</p>
+
+        <button id="clickThisButton">I want to be clicked</button>
+
+        <!-- All of our JavaScript code will go here -->
+        <script type="text/javascript">
+            document.getElementById('testParagraph').style.color = 'orange';
+            // ^^^ the getElementById uses the id from the p-tag/the id="testParagraph"
+            // below are two other ways to select elements
+                // document.getElementsByTagName("p");
+                // document.getElementsByClassName("classHere");
+            // the 2 most common ways to select an element are:
+                // document.getElementById("idHere")
+                // document.querySelectorAll("p.classNameHere")
+            // ^^^ querySelectorAll uses CSS-style selectors and returns a pseudo-array-like list of matching elements called a Node List
+            console.log(document.querySelectorAll("p.sampleClass"));
+            // ^^^ this will put the sentence from the sampleClass into the console
+
+            // The style property is one of the most common properties to change. Another useful property is called innerText (and a very similar one named innerHTML). 
+                // innerText will only reference the text displayed on the screen. innerHTML will reference all HTML elements inside the tag. Let's do a quick test:
+            // Since querySelectorAll returns an array-like NodeList, we need to use array-notation when selecting an element from it, even if there is only one element
+            document.querySelectorAll("p.sampleClass")[0].innerText = "<strong>My text was changed!</strong>"; // <-- this will print: <strong>My text was changed!</strong>
+            document.querySelectorAll("p.sampleClass")[0].innerHTML = "<strong>I am a whole new element!</strong>"; // <-- this will print: I am a whole new element! <-- in bold
+                // ^^^ This will create an entire HTML element inside the tag. If we inspect the page, we can see a whole new tag has been inserted into the existing paragraph tag. If we wanted to remove elements, we can do the same thing in reverse! Simply set the innerHTML to be blank and it will erase the contents.
+
+            console.log(document.getElementById('testParagraph').style.color)   
+            // ^^^ this will put the color name into the console
+
+
+            // A Function Declaration is loaded before any code executes, so the JavaScript engine does what's called hoisting. It hoist the Function Declaration to the top, so it loads it first. This means that you can execute the function anywhere in your code. With Function Declaration you can call the function before or after declaring the function. With Anonymous Function, you will get an error if you try calling it before you declare it
+            document.getElementById('clickThisButton').addEventListener('click', () => {
+                console.log('I was clicked!');
+            });
+            document.getElementById('clickThisButton').addEventListener('click', (details) => {
+                console.log(details);
+            });
+            document.getElementById('clickThisButton').addEventListener('click', (details) => {
+                details.target.style.backgroundColor = 'red';
+            });
+
+        </script>
+    </body>
+</html>

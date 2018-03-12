@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<!--All of our HTML code will go here-->
+	    <label for="nameInput"></label>
+	    <input type="text" id="nameInput" placeholder="John Smith" />
+
+	    <p>Welcome!</p>
+	    <p>No name has been entered</p>
+
+	    <script type="text/javascript">
+		    /* All of our JavaScript code will go here */
+	        document.getElementById('nameInput').addEventListener('keyup', (event) => {
+	            console.log(event);
+	            console.log(event.target.value);
+	            	// ^^^ this is a place you can find the input value
+	            console.log(document.getElementsByTagName("p"));
+					if (event.target.value === '') {
+			        document.getElementsByTagName("p")[1].innerText = `No name has been entered`;
+			    } else {
+			        document.getElementsByTagName("p")[1].innerText = `Everyone please welcome ${event.target.value} to the stage.`;
+			    }	            	
+			    	// ^^^ Notice the sentences are written using backticks (`), not single quote marks. This allows us to use ES-6 string syntax.
+	        });
+	        	// ^^^ keydown - The key is on its way down; keypress - The key is pressed down; keyup - The key is released
+	    </script>
+	</body>
+</html>
